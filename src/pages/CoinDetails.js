@@ -11,11 +11,17 @@ const CoinDetails = ({ dataSet, id, currency }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      fetch(`https://api.coingecko.com/api/v3/coins/${id}`)
-        .then((response) => response.json())
-        .then((result) => {
-          setDataPoint(result);
-        });
+
+      const response = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`)
+      const result = await response.json()
+      setDataPoint(result)
+
+      // fetch(`https://api.coingecko.com/api/v3/coins/${id}`)
+      // .then((response) => response.json())
+      // .then((result) => {
+      //   console.log("result",result)
+      //   setDataPoint(result);
+      // });
     };
     fetchData();
   }, []);
